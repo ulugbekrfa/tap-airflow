@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties":
+  {
+    "dag_id": {"type": "string"},
+    "dag_run_id": {"type": "string"},
+    "end_date": {"type": "string"},
+    "execution_date": {"type": "string"},
+    "external_trigger": {"type": "string"},
+    "logical_date": {"type": "string"},
+    "start_date": {"type": "string"},
+    "state": {"type": "string"}
+  }
+}
