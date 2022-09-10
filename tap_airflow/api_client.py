@@ -36,7 +36,7 @@ class ApiClient:
             LOGGER.info(api_response['dag_runs'][0])
             LOGGER.info(type(api_response['dag_runs']))
             LOGGER.info(type(api_response['dag_runs'][0]))
-            k = json.loads(api_response['dag_runs'][0])
+            k = json.dumps(api_response['dag_runs'][0])
             LOGGER.info(type(k))
             LOGGER.info(k)
             for dag in api_response['dag_runs']:
