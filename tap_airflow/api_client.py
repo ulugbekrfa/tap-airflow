@@ -34,6 +34,8 @@ class ApiClient:
             api_response = api_instance.get_dag_runs(dag_id)
             dag_list = []
             LOGGER.info(api_response['dag_runs'][0])
+            LOGGER.info(type(api_response['dag_runs']))
+            LOGGER.info(type(api_response['dag_runs'][0]))
             for dag in api_response['dag_runs']:
                 dag_dict = {}
                 for key in dag:
