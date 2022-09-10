@@ -30,11 +30,22 @@ class ApiClient:
         try:
             # List DAG runs
             api_response = api_instance.get_dag_runs(dag_id)
+            dag_list = []
             for dag in api_response['dag_runs']:
-                dag['end_date'] = json.dumps(dag['end_date'], default=str)
-                dag['execution_date'] = json.dumps(dag['execution_date'], default=str)
-                dag['logical_date'] = json.dumps(dag['logical_date'], default=str)
-                dag['start_date'] = json.dumps(dag['start_date'], default=str)
-            return api_response['dag_runs']
+                dag_dict = {}
+                for key in dag:
+                    if key == 'end_date':
+                        value = json.dumps(dag[key], default=str)
+                    elif key == 'execution_date':
+                        value = json.dumps(dag[key], default=str)
+                    elif key == 'logical_date':
+                        value = json.dumps(dag[key], default=str)
+                    elif key == 'start_date':
+                        value = json.dumps(dag[key], default=str)
+                    else:
+                        value = dag[key]
+                    dag_dict[key] = value
+                dag_list.append(dag_dict)
+            return dag_list
         except airflow_client.client.ApiException as e:
             print("Exception when calling DAGRunApi->get_dag_runs: %s\n" % e)
