@@ -5,6 +5,7 @@ following the [Singer
 spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).
 
 The tap is developed to get data from Airflow REST API.
+
 Current tap fetches data from the endpoint /dags/{dag_id}/dagRuns.  
 
 ## How to run
@@ -21,14 +22,14 @@ Current tap fetches data from the endpoint /dags/{dag_id}/dagRuns.
         deactivate
 
    1. Client configuration:
-
+    ```
       {
         "host": "http://localhost:8080/api/v1",
         "username": "username",
         "password": "password",
         "selected_all": true
       }
-    
+    ```
        > Note: here <b>batch</b> is a limit for paging which supports upto <b>10000</b> records per request
        > Note: if <b>sync_tables</b> is not specified, then the tap will fetch data for all tables
 
