@@ -2,6 +2,8 @@ import airflow_client.client
 from airflow_client.client.api import dag_api
 from airflow_client.client.api import dag_run_api
 import json
+import singer
+LOGGER = singer.get_logger()
 
 
 class ApiClient:
@@ -31,6 +33,7 @@ class ApiClient:
             # List DAG runs
             api_response = api_instance.get_dag_runs(dag_id)
             dag_list = []
+            LOGGER.info(api_response['dag_runs'][0])
             for dag in api_response['dag_runs']:
                 dag_dict = {}
                 for key in dag:
